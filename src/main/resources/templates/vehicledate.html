@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+</head>
+<body>
+<h1>Pojazdy</h1>
+<p>Hello World!</p>
+
+<div >
+    <table class="pure-table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Make</th>
+            <th>Model</th>
+            <th>Color</th>
+            <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="car: ${cars}">
+            <td id=zmienna th:text="${car.getCarId()}  "></td>
+            <td th:text="${car.getMark()}  " ></td>
+            <td th:text="${car.getModel()}  "></td>
+            <td th:text="${car.getColor()}  "></td>
+            <td th:text="${car.getDateProduction()}   "></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+<br>
+<h1><a href="/vehicles"> Powrót </a><br></h1>
+<
+
+</body>

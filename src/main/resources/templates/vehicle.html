@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+</head>
+<body>
+<h1>Pojazdy</h1>
+<p>Hello World!</p>
+
+<div >
+    <table class="pure-table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Make</th>
+            <th>Model</th>
+            <th>Color</th>
+            <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="car: ${cars}">
+            <td id=zmienna th:text="${car.getCarId()}  "></td>
+            <td th:text="${car.getMark()}  " ></td>
+            <td th:text="${car.getModel()}  "></td>
+            <td th:text="${car.getColor()}  "></td>
+            <td th:text="${car.getDateProduction()}   "></td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <form class="pure-form" th:action="@{/vehicles}" th:object="${newCar}" method="post">
+                <td> <input type="text" th:field="*{carId}" placeholder="id" th:background="grey"></td>
+                <td> <input type="text" th:field="*{mark}" placeholder="Marka" ></td>
+                <td> <input type="text" th:field="*{model}" placeholder="Model" ></td>
+                <td> <input type="text" th:field="*{color}"          placeholder="Color" ></td>
+                <td> <input type="text" th:field="*{dateProduction}"          placeholder="dateProduction" ></td>
+                <td> <button class="pure-button pure-button-primary">add Car</button></td>
+            </form>
+        </tr>
+        </tfoot>
+    </table>
+
+<br>
+    <h2>Pojazdy wyprodukowane w przedziale ...</h2>
+    <form method="post" th:action="@{/vehicles/parametr}">
+        Start <input type="text" name="namestart" th:value="${dateMin}" placeholder="1980-01-01"/>
+        Koniec <input type="text" name="nameend" th:value="${dateMin}" placeholder="2020-01-01"/>
+        <input type="submit" value="Wyszukaj" />
+    </form>
+    </div>
+
+    </body>
+    </html>
